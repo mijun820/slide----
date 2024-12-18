@@ -99,5 +99,50 @@
 .ranking_toggle{
     display: none;
 }
+.ranking_top_5_ul{
+    display: none;
+}
+input[name="top_5"]{
+    display: none;
+}
+#tayul:checked~.rnaking_content-1{
+    animation: accordion 1s;
+    
+        display: block;
+}
+#homrun:checked~.rnaking_content-2{
+    animation: accordion 1s;
+    
+        display: block;
+}
+#dasun:checked~.rnaking_content-3{
+    animation: accordion 1s;
+    
+        display: block;
+}
+#punkun:checked~.rnaking_content-4{
+    animation: accordion 1s;
+    
+        display: block;
+}
+#save:checked~.rnaking_content-5{
+    animation: accordion 1s;
+    
+        display: block;
+}
+.ranking_label{
+    display: flex;
+}
 
+@keyframes accordion{
+    from{
+        height: 0;
+        opacity: 0;
+    }
+
+    to{ 
+        height: 100px;
+        opacity: 1;
+    }
+}
 /* 랭킹 영역 */
