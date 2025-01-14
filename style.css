@@ -10,6 +10,86 @@
 }
 
 /* 전체 영역 */
+
+/* 헤더 영역 */
+.header {}
+
+/* 방문자차트 영역 */
+.chart_main {
+    text-align: center;
+}
+
+.chart_menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.chart_menu button,
+.chart_manu select {
+    padding: 5px 10px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.chart_width {
+    width: 600px;
+    height: 600px;
+    background-color: antiquewhite;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    text-align: left;
+}
+
+.width_parents {
+    display: flex;
+    align-items: center;
+}
+
+.width {
+    height: 80px;
+    background-color: black;
+    margin: 10px;
+    color: white;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.chart_height {
+    width: 600px;
+    height: 600px;
+    background-color: antiquewhite;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.height_parents {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+.height {
+    height: 100px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding: 0 10px;
+}
+
 /* 슬라이드 영역 */
 .slidebox {
     width: 50vw;
@@ -60,7 +140,7 @@
 }
 
 .modal_content {
-    width: 500px;   
+    width: 500px;
     height: 650px;
     background-color: white;
     margin: 50px auto;
@@ -80,69 +160,79 @@
     border-top: 1px solid gray;
 }
 
-@keyframes fadein{
-    from{
+@keyframes fadein {
+    from {
         opacity: 0;
     }
 
-    to{ 
+    to {
         opacity: 1;
     }
 }
 
-.modal_toggle{
+.modal_toggle {
     display: none;
 }
+
 /* 모달 영역 */
 
 /* 랭킹 영역 */
-.ranking_toggle{
+.ranking_toggle {
     display: none;
 }
-.ranking_top_5_ul{
+
+.ranking_top_5_ul {
     display: none;
 }
-input[name="top_5"]{
+
+input[name="top_5"] {
     display: none;
 }
-#tayul:checked~.rnaking_content-1{
+
+#tayul:checked~.rnaking_content-1 {
     animation: accordion 1s;
-    
-        display: block;
+
+    display: block;
 }
-#homrun:checked~.rnaking_content-2{
+
+#homrun:checked~.rnaking_content-2 {
     animation: accordion 1s;
-    
-        display: block;
+
+    display: block;
 }
-#dasun:checked~.rnaking_content-3{
+
+#dasun:checked~.rnaking_content-3 {
     animation: accordion 1s;
-    
-        display: block;
+
+    display: block;
 }
-#punkun:checked~.rnaking_content-4{
+
+#punkun:checked~.rnaking_content-4 {
     animation: accordion 1s;
-    
-        display: block;
+
+    display: block;
 }
-#save:checked~.rnaking_content-5{
+
+#save:checked~.rnaking_content-5 {
     animation: accordion 1s;
-    
-        display: block;
+
+    display: block;
 }
-.ranking_label{
+
+.ranking_label {
     display: flex;
 }
 
-@keyframes accordion{
-    from{
+@keyframes accordion {
+    from {
         height: 0;
         opacity: 0;
     }
 
-    to{ 
+    to {
         height: 100px;
         opacity: 1;
     }
 }
+
 /* 랭킹 영역 */
