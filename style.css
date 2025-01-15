@@ -9,6 +9,10 @@
     margin: 0 auto;
 }
 
+
+#goodsList{
+    display: flex;
+}
 /* 전체 영역 */
 
 /* 헤더 영역 */

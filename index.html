@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./선수제공파일/bootstrap-5.2.0-dist/css/bootstrap.css">
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
@@ -51,13 +52,18 @@
             <h1>GOODS 판매량 확인</h1>
             <div class="goodsSale_menu">
                 <div id="goodsGroup"></div>
-                <select id="sort">
-                    <option value="">판매량 오름차순</option>
-                    <option value="">판매량 내림차순</option>
-                    <option value="">가격 오름차순</option>
-                    <option value="">가격 내림차순</option>
+                <select id="sort" onchange="goodsListSort()">
+                    <option value="saleDesc">판매량 오름차순</option>
+                    <option value="saleAsc">판매량 내림차순</option>
+                    <option value="priceDesc">가격 오름차순</option>
+                    <option value="priceAsc">가격 내림차순</option>
                 </select>
             </div>
+
+            <!-- <img src="./선수제공파일/B_Module/goods/05.jpg" alt=""> -->
+
+            <div id="goodsList">
+   
         </div>
 
         <!-- 슬라이드 -->
@@ -140,10 +146,13 @@
     </footer>
 
     <!-- 푸터 영역 끝 -->
+    <script src="./선수제공파일/jquery-3.7.1.min.js"></script>
+    <script src="./선수제공파일/bootstrap-5.2.0-dist/js/bootstrap.js"></script>
     <script src="script.js"></script>
     <script>
         widthChart();
         goodsGroupAdd();
+        goodsListSort();
     </script>
 </body>
 
