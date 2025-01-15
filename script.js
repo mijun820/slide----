@@ -79,9 +79,10 @@ async function goodsGroupAdd() {
 	goodsGroupElem.innerHTML = "";
 
 	goodsGroupList.forEach((group) => {
+		// 굿즈 그룹 체크박스 출력
 		goodsGroupElem.innerHTML += `
-        <div>
-            <input id="${group}" value="${group}" type="checkbox" checked>
+        <div style="display: flex;">
+            <input onchange=""goodsListSort() id="${group}" value="${group}" type="checkbox" checked>
             <p>${group}</p>
         </div>`;
 	});
@@ -90,32 +91,76 @@ async function goodsGroupAdd() {
 async function goodsListSort() {
 	const data = await goodsData();
 	const sortValue = document.querySelector("#sort").value;
-    let goodsSortList;
-    
+	let goodsSortList;
+
+	const checkboxes = document.querySelectorAll(
+		"#goodsGroup input[type='checkbox']"
+	);
+
+	const checkedGroups = Array.from(checkboxes)
+		.filter((checkbox) => checkbox.checked)
+		.map((checkbox) => checkbox.value);
+
+	const filteredGoods = data.data.filter((item) =>
+		checkedGroups.includes(item.group)
+	);
+
 	if (sortValue == "saleDesc") {
-        goodsSortList = [...data.data].sort((a, b) => b.sale - a.sale);
+		goodsSortList = [...filteredGoods].sort((a, b) => b.sale - a.sale);
 	} else if (sortValue == "saleAsc") {
-        goodsSortList = [...data.data].sort((a, b) => a.sale - b.sale);
+		goodsSortList = [...filteredGoods].sort((a, b) => a.sale - b.sale);
 	} else if (sortValue == "priceDesc") {
-        goodsSortList = [...data.data].sort((a, b) => Number(b.price.replace(",","")) - Number(a.price.replace(",","")));
+		goodsSortList = [...filteredGoods].sort(
+			(a, b) =>
+				Number(b.price.replace(",", "")) - Number(a.price.replace(",", ""))
+		);
 	} else if (sortValue == "priceAsc") {
-        goodsSortList = [...data.data].sort((a, b) => Number(a.price.replace(",","")) - Number(b.price.replace(",","")));
+		goodsSortList = [...filteredGoods].sort(
+			(a, b) =>
+				Number(a.price.replace(",", "")) - Number(b.price.replace(",", ""))
+		);
 	}
 
-    const goodsListElem = document.querySelector("#goodsList");
-    goodsSortList.forEach((item) => {
-        goodsListElem.innerHTML +=`
-            <div class="card" style="width: 18rem;">
-                    <img src="./선수제공파일/B_Module/${item.img}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">${item.title}</h5>
-                        <p>판매량 : ${item.sale}</p>
-                        <p>가격 : ${item.price}</p>
-                        <p>분류 : ${item.group}</p>
-                        <button href="#" class="btn btn-primary w-75">수정제안</button>
+	const goodsListElem = document.querySelector("#goodsList");
+	const bestGoodsLestElem = document.querySelector("#bestGoods");
+
+	goodsListElem.innerHTML = "";
+	bestGoodsLestElem.innerHTML = "";
+
+	goodsSortList.forEach((item, index) => {
+		if (index < 3) {
+			goodsListElem.innerHTML += `
+                    <div class="card" style="width: 18rem;">
+                        <img src="./선수제공파일/B_Module/${item.img}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">[BEST상품]${item.title}</h5>
+                            <p>판매량 : ${item.sale}</p>
+                            <p>가격 : ${item.price}</p>
+                            <p>분류 : ${item.group}</p>
+                            <button href="#" class="btn btn-primary w-75" onclick="goodsEdiModal()"     >수정제안</button>
+                        </div>
                     </div>
-                </div>
-            </div>
-        `;
-    });
+                    </div>
+                    `;
+		} else {
+			goodsListElem.innerHTML += `
+                        <div class="card" style="width: 18rem;">
+                                <img src="./선수제공파일/B_Module/${item.img}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">${item.title}</h5>
+                                    <p>판매량 : ${item.sale}</p>
+                                    <p>가격 : ${item.price}</p>
+                                    <p>분류 : ${item.group}</p>
+                                    <button href="#" class="btn btn-primary w-75" onclick="goodsEdiModal()">수정제안</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+		}
+	});
 }
+
+
+function goodsEdiModal() {
+    $("#goodsModal").modal("show");
+} 

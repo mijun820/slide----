@@ -62,10 +62,10 @@
 
             <!-- <img src="./선수제공파일/B_Module/goods/05.jpg" alt=""> -->
 
-            <div id="goodsList">
-   
-        </div>
+            <div id="bestGoods" style="display: flex;"></div>
+            <div id="goodsList"></div>
 
+        </div>
         <!-- 슬라이드 -->
         <div class="slidebox"></div>
         <!-- 모달 -->
@@ -146,6 +146,31 @@
     </footer>
 
     <!-- 푸터 영역 끝 -->
+
+    <!-- 수정 제안 모달 시작 -->
+    <div id="goodsModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="goodsEdit" class="modal-body">
+                <div id="goodsEditImg"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">이미지 추가</button>
+              <button type="button" class="btn btn-secondary">글상자 추가</button>
+              <button type="button" class="btn btn-danger">삭제</button>
+              <button type="button" class="btn btn-warning">다운로드</button>
+              <button type="button" class="btn btn-info">글상자 이동 및 회전</button>
+              <button type="button" class="btn btn-light">원래대로</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- 수정 제안 모달 끝 -->
+
     <script src="./선수제공파일/jquery-3.7.1.min.js"></script>
     <script src="./선수제공파일/bootstrap-5.2.0-dist/js/bootstrap.js"></script>
     <script src="script.js"></script>
