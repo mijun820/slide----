@@ -5,6 +5,13 @@ async function visitorsData(){
     return data;
 }
 
+// 굿즈 정보 가져오기
+async function goodsData(){
+    const response = await fetch("./선수제공파일/B_Module/goods.json");
+    const data = await response.json(); 
+    return data;
+}
+
 async function chartView() {
     let data = await visitorsData();
     const league = document.querySelector("#league").value;
@@ -62,3 +69,28 @@ async function heightChart() {
         </div>`;
     });
 }
+
+async function goodsGroupAdd() {
+    const data = await goodsData();
+
+    const goodsGroupList = [...new Set(data.data.map((item) => item.group))]
+
+    const goodsGroupElem = document.querySelector("#goodsGroup");
+    goodsGroupElem.innerHTML = "";
+
+    goodsGroupList.forEach((group) => {
+        goodsGroupElem.innerHTML += `
+        <div>
+            <input id="${group}" value="${group}" type="checkbox" checked>
+            <p>${group}</p>
+        </div>`;
+    });
+}
+
+async function goodsListSort() {
+    const data = await goodsData();
+
+    console.log(data.data)
+}
+
+goodsListSort();

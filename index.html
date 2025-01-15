@@ -15,9 +15,9 @@
             <h1>헤더</h1>
         </header>
         <!-- 헤더 영역 끝끝 -->
-         <!-- 매인영역 시작 -->
+        <!-- 매인영역 시작 -->
 
-         <!-- 방문자 차트 영역 시작 -->
+        <!-- 방문자 차트 영역 시작 -->
         <h1>방문자 수 조회</h1>
         <div>
             <select name="league" id="league">
@@ -39,14 +39,26 @@
             <button onclick="widthChart()">가로보기</button>
             <button onclick="heightChart()">세로보기</button>
         </div>
-        
-        
+
+
 
         <div id="chartDiv"></div>
 
-        
 
-         <!-- 방문자 차트 영역 끝 -->
+
+        <!-- 굿즈 판매영역 시작 -->
+        <div>
+            <h1>GOODS 판매량 확인</h1>
+            <div class="goodsSale_menu">
+                <div id="goodsGroup"></div>
+                <select id="sort">
+                    <option value="">판매량 오름차순</option>
+                    <option value="">판매량 내림차순</option>
+                    <option value="">가격 오름차순</option>
+                    <option value="">가격 내림차순</option>
+                </select>
+            </div>
+        </div>
 
         <!-- 슬라이드 -->
         <div class="slidebox"></div>
@@ -120,11 +132,18 @@
         </div>
     </div>
 
-         <!-- 매인영역 끝 -->
+    <!-- 매인영역 끝 -->
+    <!-- 푸터 영역 시작 -->
 
+    <footer>
+        <h1>푸터</h1>
+    </footer>
+
+    <!-- 푸터 영역 끝 -->
     <script src="script.js"></script>
     <script>
         widthChart();
+        goodsGroupAdd();
     </script>
 </body>
 
