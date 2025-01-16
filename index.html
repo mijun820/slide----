@@ -128,7 +128,7 @@
         <div class="modal_content">
             <!-- 스타일 요소 -->
             <div class="modal_header">
-                <h2>4월 20일일</h2>
+                <h2>4월 20일</h2>
             </div>
             <img src="./imges/no.png" alt="">
             <p>아직 게임이 없습니다.</p>
@@ -144,7 +144,7 @@
     <footer>
         <h1>푸터</h1>
     </footer>
-
+<h5 class="modal-title"></h5>
     <!-- 푸터 영역 끝 -->
 
     <!-- 수정 제안 모달 시작 -->
@@ -152,19 +152,20 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title"></h5>
+                <div id="goodsModalTitle"></div>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div id="goodsEdit" class="modal-body">
                 <div id="goodsEditImg"></div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">이미지 추가</button>
-              <button type="button" class="btn btn-secondary">글상자 추가</button>
-              <button type="button" class="btn btn-danger">삭제</button>
+              <button type="button" onclick="addImg()" class="btn btn-primary">이미지 추가</button>
+              <input id="imgInput" type="file" onchange="addEditImg()">
+              <button type="button" onclick="addTextBox()" class="btn btn-secondary">글상자 추가</button>
+              <button type="button" onclick="deleteImg()" class="btn btn-danger">삭제</button>
               <button type="button" class="btn btn-warning">다운로드</button>
               <button type="button" class="btn btn-info">글상자 이동 및 회전</button>
-              <button type="button" class="btn btn-light">원래대로</button>
+              <button type="button" onclick="deleteTextBox()" class="btn btn-light">원래대로</button>
             </div>
           </div>
         </div>

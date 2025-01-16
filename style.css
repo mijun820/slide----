@@ -30,6 +30,20 @@
     width: 90%;
     height: 90%;
 }
+
+#imgInput{
+    display: none;
+}
+
+#goodsEditImg{
+    background-size: 100%;
+}
+
+.textbox{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
 /* 전체 영역 */
 
 /* 헤더 영역 */

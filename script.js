@@ -137,7 +137,7 @@ async function goodsListSort() {
                             <p>판매량 : ${item.sale}</p>
                             <p>가격 : ${item.price}</p>
                             <p>분류 : ${item.group}</p>
-                            <button href="#" class="btn btn-primary w-75" onclick="goodsEdiModal()"     >수정제안</button>
+                            <button href="#" class="btn btn-primary w-75" onclick="goodsEdiModal(${item.idx})"     >수정제안</button>
                         </div>
                     </div>
                     </div>
@@ -151,7 +151,7 @@ async function goodsListSort() {
                                     <p>판매량 : ${item.sale}</p>
                                     <p>가격 : ${item.price}</p>
                                     <p>분류 : ${item.group}</p>
-                                    <button href="#" class="btn btn-primary w-75" onclick="goodsEdiModal()">수정제안</button>
+                                    <button href="#" class="btn btn-primary w-75" onclick="goodsEdiModal(${item.idx})">수정제안</button>
                                 </div>
                             </div>
                         </div>
@@ -160,7 +160,68 @@ async function goodsListSort() {
 	});
 }
 
+let editImgStatus = false;
 
-function goodsEdiModal() {
-    $("#goodsModal").modal("show");
-} 
+async function goodsEdiModal(idx) {
+	const data = await goodsData();
+    const goods = data.data.find((item) => item.idx == idx);
+    const goodsEditElem = document.querySelector("#goodsEditImg");
+	
+	if(editImgStatus == false){
+		goodsEditElem.innerHTML = `<h4>이미지를 추가해주세요 :)</h4>`;
+	}
+		
+	const modalTitleElems = document.querySelector("#goodsModalTitle");
+	modalTitleElems.innerHTML = `<h5 class="modal-title">${goods.title} 수정제안</h5>`;
+
+	$("#goodsModal").modal("show");
+}
+
+function addImg() {
+	editImgStatus = true;
+	$("#imgInput").click();
+}
+
+function addEditImg() {
+	const img = document.querySelector("#imgInput").files[0];
+    const goodsEditElem = document.querySelector("#goodsEditImg");
+    const imgUrl = URL.createObjectURL(img);
+    goodsEditElem.innerHTML = "";
+    goodsEditElem.style.backgroundImage = `url(${imgUrl})`;
+}
+
+function addTextBox() {
+	if(editImgStatus == false){
+		alert("이미지 추가 후 글상자 추가가 가능합니다.");
+	}else{
+		const goodsEditElem = document.querySelector("#goodsEditImg");
+
+		const textBox = document.createElement("div");
+		textBox.className += "textbox";
+		textBox.textContent = "텍스트를 입력해주세요";
+		textBox.contentEditable = true;
+
+		goodsEditElem.appendChild(textBox)
+	}
+}
+
+function deleteTextBox() {
+	const editImg = document.querySelector("#goodsEditImg");
+
+	const textBoxes = Array.from(document.querySelectorAll("#goodsEditImg *"));
+
+	if(editImgStatus == false){
+		alert("이미지를 추가해주세요!");
+	} else if (textBoxes.length == 0) {
+		alert("글상자 요소가 없습니다.");
+	} else {
+		editImg.innerHTML = "";
+	}
+}
+
+function deleteImg() {
+	const editImgElem = document.querySelector("#goodsEditImg");
+
+	editImgElem.style.backgroundImage = "";
+	editImgStatus = false;
+}
